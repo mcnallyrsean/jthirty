@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
-
+    const p = document.querySelector('p');
     function makeGreen() {
       const p = document.querySelector('p');
       p.style.color = '#BADA55';
@@ -18,29 +20,58 @@
     }
 
     // Regular
+    console.log('hello');
 
     // Interpolated
+    console.log('hello i am a %s ', '💩')
+    console.log(`hello i am a 💩`);
 
     // Styled
+    console.log("%c I am some great text", 'font-sizeL 30px; background: #bada55; color: purple;');
 
     // warning!
+    console.warn('nooooo');
 
     // Error :|
+    console.error('Shit 💩💩');
 
     // Info
+    console.info('This is a 💩 emoji')
 
     // Testing
+    console.assert(1 === 2, 'This is wrong!!!!')
 
     // clearing
+    // console.clear();
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`this is ${dog.name}`);
+      console.groupEnd(`${dog.name}`);
+    })
+    console.table(dogs);
 
     // counting
+    console.count('💩');
+    console.count('💩');
+    console.count('💩');
+    console.count('💩');
+    console.count('💩');
 
     // timing
-
+    console.time('fetching data');
+    fetch('https://codepen.io/jobs.json')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      })
   </script>
 </body>
+
 </html>
